@@ -7,14 +7,16 @@ app.use("/api/*", cors());
 
 // Initialize DB table on first use
 async function ensureTable(db: D1Database) {
-  await db.exec(`
-    CREATE TABLE IF NOT EXISTS subscribers (
-      id        INTEGER PRIMARY KEY AUTOINCREMENT,
-      email     TEXT    NOT NULL UNIQUE,
-      name      TEXT,
-      subscribed_at TEXT NOT NULL DEFAULT (datetime('now'))
+  await db
+    .prepare(
+      `CREATE TABLE IF NOT EXISTS subscribers (
+        id            INTEGER PRIMARY KEY AUTOINCREMENT,
+        email         TEXT NOT NULL UNIQUE,
+        name          TEXT,
+        subscribed_at TEXT NOT NULL DEFAULT (datetime('now'))
+      )`
     )
-  `);
+    .run();
 }
 
 app.post("/api/subscribe", async (c) => {
