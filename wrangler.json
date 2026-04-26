@@ -3,7 +3,9 @@
 	"name": "vite-react-template",
 	"main": "./src/worker/index.ts",
 	"compatibility_date": "2025-10-08",
-	"compatibility_flags": ["nodejs_compat"],
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
 	"observability": {
 		"enabled": true
 	},
@@ -11,5 +13,18 @@
 	"assets": {
 		"directory": "./dist/client",
 		"not_found_handling": "single-page-application"
-	}
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "pharma-newsletter",
+			"database_id": "ef3c976e-5e56-4026-9e1f-e5b66989c2a6"
+		},
+		{
+			"binding": "pharma_newsletter",
+			"database_name": "pharma-newsletter",
+			"database_id": "ef3c976e-5e56-4026-9e1f-e5b66989c2a6",
+			"remote": true
+		}
+	]
 }
